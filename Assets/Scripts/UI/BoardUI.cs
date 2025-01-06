@@ -23,20 +23,45 @@ namespace Chess.Game {
 
 		}
 
-		public void HighlightLegalMoves (Board board, Coord fromSquare) {
-			if (showLegalMoves) {
+		public void HighlightLegalMoves(Board board, Coord fromSquare) {
+    if (showLegalMoves) {
+        // Define the base colors for light and dark squares
+        Color gradientStartLight = new Color(220f/255f, 92f/255f, 144f/255f); // Light square gradient start
+        Color gradientEndLight = new Color(169f/255f, 91f/255f, 207f/255f);   // Light square gradient end
+        Color gradientStartDark = new Color(192f/255f, 84f/255f, 140f/255f);  // Dark square gradient start
+        Color gradientEndDark = new Color(152f/255f, 85f/255f, 187f/255f);    // Dark square gradient end
 
-				var moves = moveGenerator.GenerateMoves (board);
+        // Define the darker color to apply on legal moves
+        Color darkenedLightStart = gradientStartLight * 0.7f; // Darker shade of light square
+        Color darkenedLightEnd = gradientEndLight * 0.7f;     // Darker shade of light square
+        Color darkenedDarkStart = gradientStartDark * 0.7f;   // Darker shade of dark square
+        Color darkenedDarkEnd = gradientEndDark * 0.7f;       // Darker shade of dark square
 
-				for (int i = 0; i < moves.Count; i++) {
-					Move move = moves[i];
-					if (move.StartSquare == BoardRepresentation.IndexFromCoord (fromSquare)) {
-						Coord coord = BoardRepresentation.CoordFromIndex (move.TargetSquare);
-						SetSquareColour (coord, boardTheme.lightSquares.legal, boardTheme.darkSquares.legal);
-					}
-				}
-			}
-		}
+        var moves = moveGenerator.GenerateMoves(board);
+
+        for (int i = 0; i < moves.Count; i++) {
+            Move move = moves[i];
+            if (move.StartSquare == BoardRepresentation.IndexFromCoord(fromSquare)) {
+                Coord coord = BoardRepresentation.CoordFromIndex(move.TargetSquare);
+
+                // Apply darker color for legal move on light squares
+                if (coord.IsLightSquare()) {
+                    float t = (coord.fileIndex + coord.rankIndex) / 14f; // Normalized gradient factor
+                    Color interpolatedColor = Color.Lerp(darkenedLightStart, darkenedLightEnd, t);
+                    SetSquareColour(coord, interpolatedColor, interpolatedColor);
+                }
+                // Apply darker color for legal move on dark squares
+                else {
+                    float t = (coord.fileIndex + coord.rankIndex) / 14f; // Normalized gradient factor
+                    Color interpolatedColor = Color.Lerp(darkenedDarkStart, darkenedDarkEnd, t);
+                    SetSquareColour(coord, interpolatedColor, interpolatedColor);
+                }
+            }
+        }
+    }
+}
+
+
 
 		public void DragPiece (Coord pieceCoord, Vector2 mousePos) {
 			squarePieceRenderers[pieceCoord.fileIndex, pieceCoord.rankIndex].transform.position = new Vector3 (mousePos.x, mousePos.y, pieceDragDepth);
@@ -169,17 +194,31 @@ namespace Chess.Game {
 		}
 
 		public void ResetSquareColours (bool highlight = true) {
-			for (int rank = 0; rank < 8; rank++) {
-				for (int file = 0; file < 8; file++) {
-					SetSquareColour (new Coord (file, rank), boardTheme.lightSquares.normal, boardTheme.darkSquares.normal);
-				}
-			}
-			if (highlight) {
-				if (!lastMadeMove.IsInvalid) {
-					HighlightMove (lastMadeMove);
-				}
-			}
-		}
+    Color gradientStartLight = new Color(220f/255f,92f/255f,144f/255f); // Light square gradient start
+    Color gradientEndLight = new Color(169f/255f,91f/255f,207f/255f);   // Light square gradient end
+    Color gradientStartDark = new Color(192f/255f,84f/255f,140f/255f);  // Dark square gradient start
+    Color gradientEndDark = new Color(152f/255f,85f/255f,187f/255f);    // Dark square gradient end
+
+    for (int rank = 0; rank < 8; rank++) {
+        for (int file = 0; file < 8; file++) {
+            float t = (rank + file) / 14f; // Normalized gradient factor (range 0 to 1)
+            if ((rank + file) % 2 == 0) {
+                // Light square
+                Color interpolatedColor = Color.Lerp(gradientStartLight, gradientEndLight, t);
+                SetSquareColour(new Coord(file, rank), interpolatedColor, interpolatedColor);
+            } else {
+                // Dark square
+                Color interpolatedColor = Color.Lerp(gradientStartDark, gradientEndDark, t);
+                SetSquareColour(new Coord(file, rank), interpolatedColor, interpolatedColor);
+            }
+        }
+    }
+
+    if (highlight && !lastMadeMove.IsInvalid) {
+        HighlightMove(lastMadeMove);
+    }
+}
+
 
 		void SetSquareColour (Coord square, Color lightCol, Color darkCol) {
 			squareRenderers[square.fileIndex, square.rankIndex].material.color = (square.IsLightSquare ()) ? lightCol : darkCol;
@@ -196,6 +235,7 @@ namespace Chess.Game {
 		public Vector3 PositionFromCoord (Coord coord, float depth = 0) {
 			return PositionFromCoord (coord.fileIndex, coord.rankIndex, depth);
 		}
+
 
 	}
 }

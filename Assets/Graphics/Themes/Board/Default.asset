@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   lightSquares:
-    normal: {r: 0.93333334, g: 0.84705883, b: 0.7529412, a: 1}
+    normal: {r: 0.3207547, g: 0.14797704, b: 0.0045389733, a: 1}
     legal: {r: 0.8666667, g: 0.34901962, b: 0.34901962, a: 0}
     selected: {r: 0.9245283, g: 0.7725114, b: 0.48406905, a: 0}
     moveFromHighlight: {r: 0.8113208, g: 0.6759371, b: 0.41714135, a: 0}
     moveToHighlight: {r: 0.8679245, g: 0.813849, b: 0.48718405, a: 0}
   darkSquares:
-    normal: {r: 0.67058825, g: 0.47843137, b: 0.39607844, a: 1}
+    normal: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
     legal: {r: 0.77254903, g: 0.26666668, b: 0.30980393, a: 0}
     selected: {r: 0.7830189, g: 0.6196811, b: 0.31394625, a: 0}
     moveFromHighlight: {r: 0.7735849, g: 0.6194568, b: 0.36854753, a: 0}

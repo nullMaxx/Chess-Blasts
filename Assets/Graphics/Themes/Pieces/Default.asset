@@ -13,22 +13,16 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   whitePieces:
-    pawn: {fileID: 421191062671846005, guid: 2345a1e863e9d4c6686f1e9f1a23d754, type: 3}
-    rook: {fileID: -8231439895271094956, guid: 2345a1e863e9d4c6686f1e9f1a23d754, type: 3}
-    knight: {fileID: 5262411738066956617, guid: 2345a1e863e9d4c6686f1e9f1a23d754,
-      type: 3}
-    bishop: {fileID: 1801684832408766203, guid: 2345a1e863e9d4c6686f1e9f1a23d754,
-      type: 3}
-    queen: {fileID: -5707208235025365451, guid: 2345a1e863e9d4c6686f1e9f1a23d754,
-      type: 3}
-    king: {fileID: 5815346444209245126, guid: 2345a1e863e9d4c6686f1e9f1a23d754, type: 3}
+    pawn: {fileID: 21300000, guid: fe954fa5a1de38f439f107bbdb9e9340, type: 3}
+    rook: {fileID: 21300000, guid: 4fca09d1d937a4842a2ff749fe49584f, type: 3}
+    knight: {fileID: 21300000, guid: 3e671a87cfb7b9e4ea054aa77ac9f700, type: 3}
+    bishop: {fileID: 21300000, guid: 61c3d57147233a842b7d49d844cbebe7, type: 3}
+    queen: {fileID: 21300000, guid: 174a726364148ff48bc58d5b3bd52d1a, type: 3}
+    king: {fileID: 21300000, guid: 23741b3a480e3c54588be4d877a60088, type: 3}
   blackPieces:
-    pawn: {fileID: -7446464978723970562, guid: 2345a1e863e9d4c6686f1e9f1a23d754, type: 3}
-    rook: {fileID: -9028730725494140493, guid: 2345a1e863e9d4c6686f1e9f1a23d754, type: 3}
-    knight: {fileID: 2484422302985503874, guid: 2345a1e863e9d4c6686f1e9f1a23d754,
-      type: 3}
-    bishop: {fileID: -4521170433502928094, guid: 2345a1e863e9d4c6686f1e9f1a23d754,
-      type: 3}
-    queen: {fileID: -5519977043689896800, guid: 2345a1e863e9d4c6686f1e9f1a23d754,
-      type: 3}
-    king: {fileID: 6713323665980220584, guid: 2345a1e863e9d4c6686f1e9f1a23d754, type: 3}
+    pawn: {fileID: 21300000, guid: eb4213fa9b37e814fb528a4e5694d4dd, type: 3}
+    rook: {fileID: 21300000, guid: e07457f0274d1ed49a3a32f81aa21337, type: 3}
+    knight: {fileID: 21300000, guid: 215d55230d4f2094d96a3bda5b2261e1, type: 3}
+    bishop: {fileID: 21300000, guid: 7eb18ad39dd05094884ba7ec6eab3ec7, type: 3}
+    queen: {fileID: 21300000, guid: 20be08c0c667e4942b7660bb8eeeac9e, type: 3}
+    king: {fileID: 21300000, guid: 1f732b936ec34a54e84c053a7f03c1db, type: 3}

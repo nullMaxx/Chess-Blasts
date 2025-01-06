@@ -29,5 +29,12 @@
 		public void RequestAbortSearch () {
 			requestAbortSearch?.Invoke ();
 		}
+		public void Change()
+		{
+			depth = (depth + 1) % 7;
+			if(depth == 0)
+				depth = 1;
+		}
 	}
+	
 }

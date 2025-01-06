@@ -26,8 +26,8 @@ MonoBehaviour:
   promotionsToSearch: 2
   diagnostics:
     lastCompletedDepth: 0
-    moveVal: g3
+    moveVal: 
     move: 
     eval: 0
-    isBook: 1
+    isBook: 0
     numPositionsEvaluated: 0
